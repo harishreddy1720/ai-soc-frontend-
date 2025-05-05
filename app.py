@@ -7,7 +7,7 @@ uploaded_file = st.file_uploader("Upload Network Logs (CSV)", type=["csv"])
 
 if uploaded_file:
     response = requests.post(
-  "https://your-render-url.onrender.com/predict_anomaly/",
+  "https://ai-powerd-soc.onrender.com/predict_anomaly/",
         files={"file": uploaded_file}
     )
    import streamlit as st
@@ -15,7 +15,7 @@ import pandas as pd
 import requests
 
 response = requests.post(
-    "https://your-render-url.onrender.com/predict_anomaly/",
+    "https://ai-powerd-soc.onrender.com/predict_anomaly/",
     files={"file": uploaded_file}
 )
 
