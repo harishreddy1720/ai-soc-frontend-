@@ -11,7 +11,7 @@ uploaded_file = st.file_uploader("Upload Network Logs (CSV)", type=["csv"])
 if uploaded_file:
     # Send the file to the backend
     response = requests.post(
-        "https://ai-powerd-soc.onrender.com/predict_anomaly/",
+        "https://ai-powerd-soc-1.onrender.com/predict_anomaly/",
         files={"file": uploaded_file}
     )
 
