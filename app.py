@@ -10,7 +10,26 @@ if uploaded_file:
   "https://your-render-url.onrender.com/predict_anomaly/",
         files={"file": uploaded_file}
     )
-    alerts = response.json()
+   import streamlit as st
+import pandas as pd
+import requests
+
+response = requests.post(
+    "https://your-render-url.onrender.com/predict_anomaly/",
+    files={"file": uploaded_file}
+)
+
+if response.status_code == 200:
+    try:
+        alerts = response.json()
+    except ValueError:
+        st.error("❌ The response is not valid JSON.")
+        st.stop()
+else:
+    st.error(f"❌ Request failed with status code {response.status_code}")
+    st.error(f"Response text: {response.text}")
+    st.stop()
+
     st.subheader("Detected Anomalies")
     if alerts:
         df_alerts = pd.DataFrame(alerts)
