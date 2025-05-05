@@ -7,7 +7,7 @@ uploaded_file = st.file_uploader("Upload Network Logs (CSV)", type=["csv"])
 
 if uploaded_file:
     response = requests.post(
-        "http://localhost:8000/predict_anomaly/",
+  "https://your-render-url.onrender.com/predict_anomaly/",
         files={"file": uploaded_file}
     )
     alerts = response.json()
